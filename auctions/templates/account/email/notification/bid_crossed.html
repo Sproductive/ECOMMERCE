@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bid Overbid Notification</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                padding: 20px;
+            }
+    
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                background-color: #ffffff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+    
+            h1 {
+                color: #333333;
+            }
+    
+            p {
+                color: #666666;
+            }
+    
+            .button {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #3498db;
+                color: #ffffff;
+                text-decoration: none;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Bid Overbid Notification</h1>
+            <p>Dear {{name}},</p>
+            <p>We regret to inform you that your bid on the item {{item_name}} has been overbid by another user. The current highest bid is ${{current_bid}}.</p>
+            <p>You can visit the auction page to view the latest bids and consider placing a new bid if you're still interested in the item.</p>
+            <a href="[Link to the product Page]" class="button">View Auction</a>
+            <p>Best regards,<br>Auction</p>
+        </div>
+    </body>
+</html>

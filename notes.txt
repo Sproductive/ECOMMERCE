@@ -1,0 +1,2 @@
+notification = successfull bid , item has been bought , delivery notification , someone else placed a bid, delivered sucessfully, order placed
+each user will have many addresses

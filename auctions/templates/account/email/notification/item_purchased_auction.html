@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auction Winner Notification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333333;
+        }
+
+        p {
+            color: #666666;
+        }
+
+        .status {
+            font-weight: bold;
+            color: #2ecc71; /* Success color */
+        }
+
+        .warning {
+            background-color: #e74c3c; /* Light Red for Warning */
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .warning p{
+        color: #ffffff; /* White text for better visibility */
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Auction Winner Notification</h1>
+        <p>Dear {{name}},</p>
+        <p>Congratulations! We are thrilled to inform you that you have won the auction for the item {{item_name}}.</p>
+        <p class="status">Auction Ended: You are the Highest Bidder!</p>
+        <p>The auction has concluded, and your bid was the highest. As a result, you are now the proud owner of {{item_name}}.</p>
+        <p>Please follow the instructions below to complete the purchase:</p>
+        <ol>
+            <li>Review the details of your winning bid.</li>
+            <li>Proceed to the payment process.</li>
+            <li>Arrange for the delivery or pick-up of the item.</li>
+        </ol>
+        <a href="{{Link to Payment Page}}" class="button">Complete Payment</a>
+        <p>If you have any questions or need further assistance, please feel free to contact our support team.</p>
+        <a href="{{Link to Support}}" class="button">Contact Support</a>
+        <div class="warning">
+            <p><strong>Important:</strong> Please complete the payment within 2 days. If not, the item may be passed on to the next highest bidder.</p>
+        </div>
+        <p>Thank you for participating in the auction. We hope you enjoy your new item!</p>
+        <p>Best regards,<br>The Auction Team</p>
+    </div>
+</body>
+</html>

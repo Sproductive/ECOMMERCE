@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Placement Notification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333333;
+        }
+
+        p {
+            color: #666666;
+        }
+
+        .status {
+            font-weight: bold;
+            color: #2ecc71; /* Success color */
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Order Placement Notification</h1>
+        <p>Dear {{user}},</p>
+        <p>We are excited to inform you that your order has been successfully placed.</p>
+        <p class="status">Order Placed Successfully!</p>
+        <p>Here are the details of your order:</p>
+        <ul>
+            <li>Order Number: {{purchase_id}}</li>
+            <li>Item: {{item_name}}</li>
+            <li>Total Amount: ${{amound}}</li>
+        </ul>
+        <p>You can track the status of your order and view more details by clicking the button below:</p>
+        <a href="{{Link to Order Details}}" class="button">Track Order</a>
+        <p>If you have any questions or concerns, please feel free to contact our customer support team.</p>
+        <a href="{{Link to Support}}" class="button">Contact Support</a>
+        <p>Thank you for choosing our services. We appreciate your business!</p>
+        <p>Best regards,<br>The Order Team</p>
+    </div>
+</body>
+</html>

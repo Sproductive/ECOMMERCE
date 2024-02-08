@@ -1,0 +1,72 @@
+{% extends "auctions/layout.html" %}
+{% block body %}
+
+<h1>New Item</h1>
+<form action="{% url 'NewItem' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <!-- <input class="form-control" autofocus type="text" name="username" placeholder="Username"> -->
+        {{form.title}}
+        
+    </div>
+    <div class="form-group">
+        
+        {{form.description}}
+        <!-- <input class="form-control" type="email" name="email" placeholder="Email Address"> -->
+    </div>
+    <div class="form-group">
+        {{form.starting_bid}}
+        
+        <!-- <input class="form-control" type="password" name="password" placeholder="Password"> -->
+    </div>
+    <div class="form-group">
+        {{form.max_bid}}
+        
+        <!-- <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password"> -->
+    </div>
+    <div class="form-group">
+        {{form.image}}
+        
+    </div>
+    <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+        {{form.last_bidding_datetime}}
+        <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Sell</button>
+</form>
+    <script>
+        $(function () {
+            $("#datetimepicker1").datetimepicker({
+                format: 'MM/DD/YYYY HH:mm',
+            });
+          });
+    </script>
+    <style>
+        #datetimepicker1{
+            width: 30%;
+        }
+        .input-group{
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: stretch;
+            width: 100%;
+        }
+        .input-group-text {
+            display: flex;
+            align-items: center;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            text-align: center;
+            white-space: nowrap;
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+            border-radius: .25rem
+        }
+    </style>
+{% endblock %}

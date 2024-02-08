@@ -1,0 +1,51 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <div class="notifications_view_heading">
+        <div class="notifications_view_sub">
+            <span class="notification_view_text_heading">Notifications</span>
+        </div>
+    </div>
+    {% if message %}
+    <div style="color: black">{{message}}</div>
+    {% endif %}
+    <!-- this csrf token provides the js for the -->
+    {% csrf_token %}
+    <div class="notification_card_container flex" >
+        {% load tz %}
+        {% for notification in notifications %}
+            {% if notification.type == 'BS'%}
+            {% if not notification.seen %}
+                <div class="notification_card grid bs_notification unseen_notification" data-notification-id="{{notification.id}}" >
+                    <span class="notification_svg_container">
+                        <svg id="eV6Y8NywAQD1" class="notification_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 72 72" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><g><g transform="matrix(1.285714 0 0 1.285714-10.285704-10.285704)"><circle r="28" transform="translate(36 36)" fill="#f00"/></g></g></svg>
+                    </span>
+            {% else %}    
+                <div class="notification_card grid bs_notification">
+            {% endif %}
+                    <div class="notification_heading_container"><span class="notification_heading">Bid Placed</span></div>
+                    <div class="notification_text_container"><span class="notification_text">Hello {{ notification.data.0 }} you have successfully placed a bid of ${{ notification.data.2 }} on the item <a href="{{ notification.data.3 }}"><b>{{ notification.data.1 }}</b></a></span></div>
+                    <div class="notification_date_container"><span class="notification_date">{{ notification.created_at|timezone:user_timezone}}</span></div>
+                    <div class="notification_delete_container"><button class="notification_delete_btn" data-notification-id="{{notification.id}}">Delete</button></div>
+                </div>
+            {% elif notification.type == 'OB' %}
+            {% if not notification.seen %}
+                <div class="notification_card grid ob_notification unseen_notification" data-notification-id="{{notification.id}}">
+                    <span class="notification_svg_container">
+                        <svg id="eV6Y8NywAQD1" class="notification_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 72 72" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><g><g transform="matrix(1.285714 0 0 1.285714-10.285704-10.285704)"><circle r="28" transform="translate(36 36)" fill="#f00"/></g></g></svg>
+                    </span>
+            {% else %}
+                <div class="notification_card grid ob_notification">
+            {% endif %}
+                    <div class="notification_heading_container"><span class="notification_heading">Overbidded</span></div>
+                    <div class="notification_text_container"><span class="notification_text">Hello {{notification.data.0}}, we regret to inform you that your bid of ${{notification.data.2}} on <a href="{{notification.data.4}}">{{notification.data.1}}</a> has been surpassed by a new bid of ${{notification.data.3}}. To update your bid <a href="{{notification.data.4}}">click here</a>.</span></div>
+                    <div class="notification_date_container"><span class="notification_date">{{ notification.created_at|timezone:user_timezone}}</span></div>
+                    <div class="notification_delete_container"><button class="notification_delete_btn" data-notification-id="{{notification.id}}">Delete</button></div>
+                </div>
+            {% elif notification.type == 'DEL' %}
+            {% elif notification.type == 'AIW' %}
+            {% elif notification.type == 'AIL' %}
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div>
+    {% for expired_account in expired_accounts %}
+    <form action="{% url 'login' %}?ref=expired_switch" method="get">
+        {% csrf_token %}
+        <input type="hidden" value="{{expired_account.username}}" name="expired_username">
+        <button type="submit"> 
+            <div style="color: black"> {{ expired_account.username }}    expired</div>
+            <div style="color: black"> {{ expired_account.email }} </div>
+        </button>
+    </form>
+    {% endfor %}
+    {% for switchable_account in switchable_accounts %}
+    <form action="{% url 'switch_accounts' %}?ref=switch_accounts" method="post">
+        {% csrf_token %}
+        <input type="hidden" value={{switchable_account.index}} name="index">
+        <button type="submit" class="switch_accounts_btn"> 
+            {% if switchable_account.current %}
+            <svg width="30px" height="30px" viewBox="0 0 72.00 72.00" id="emoji" xmlns="http://www.w3.org/2000/svg" fill="#00ff00" stroke="#00ff00" transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)"><g id="SVGRepo_bgCarrier" stroke-width="0"/><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#4CAF50" stroke-width="4.032000000000001"/><g id="SVGRepo_iconCarrier"> <g id="color"> <circle cx="36" cy="36" r="28" fill="#00ff00ff00"/> </g> <g id="line"> <circle cx="36" cy="36" r="28" fill="none" stroke="#00ff00ff00000000" stroke-linejoin="round" stroke-width="0.00072"/> </g> </g></svg>
+            {% endif %}
+            <div style="color: black"> {{ switchable_account.username }} </div>
+            <div style="color: black"> {{ switchable_account.email }} </div>
+        </button>
+    </form>
+{% endfor %}
+</div>
+{% endblock %}

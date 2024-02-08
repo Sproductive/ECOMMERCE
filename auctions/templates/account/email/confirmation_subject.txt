@@ -1,0 +1,14 @@
+ html
+
+    
+        Hello {{ user.username }},
+
+        Thank you for registering with skyscape. To complete your registration, please click the following link:
+
+        {{ confirmation_url }}Confirm Email
+
+        If you have any questions or need assistance, feel free to contact our support team.
+
+        Best regards,From SkyScape Team
+    
+ 

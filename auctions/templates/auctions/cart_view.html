@@ -1,0 +1,10 @@
+{% extends "auctions/layout.html" %}
+{% block body %}
+<div style="color: black"> Welcome to the cart</div>
+{% if message %}
+<div>{{message}}</div>
+{% endif %}
+{% for product in cart_items %}
+    <div style="color: black">{{product.title}}</div>
+{% endfor %}
+{% endblock %}

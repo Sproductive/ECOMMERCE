@@ -1,0 +1,84 @@
+{% extends "auctions/layout.html" %} {% block body %}
+
+{% if sendMessage %}
+    <script>
+        window.reload = true;
+    </script>
+{% endif %}
+
+
+<h2>Active Listings</h2>
+<a href="{% url 'NewItem' %}">New Item</a>
+
+<div class="grid">
+    {% for product in products %}
+    <div class="grid-item">
+        <div class="item item-name">{{product.title}}</div>
+            <div style="display: inline-block">
+                <a href="{% url 'display_image' image_id=product.product_id%}" target="_blank" style="display: inline">
+                    <img src="{{product.image}}" alt="Item Image" width="200" style="border: 2px solid white"/>
+                </a>
+            </div>
+
+        <div class="item item-descrip">{{product.description}}</div>
+        <div class="item item-c-bid item-bid">{{product.current_bid}}</div>
+        <div class="item item-s-bid item-bid">{{product.starting_bid}}</div>
+        <div class="item item-m-bid item-bid">{{product.max_bid}}</div>
+        <div class="item item-form">
+            <form action="{% url 'index'%}" method="post">
+                {% csrf_token %} 
+                <input type="hidden" name="user_id" value="{{ user.id }}" />
+                <input autocomplete="off" type="decimal" id="{{product.product_id}}" name="bid" data-max-bid="{{product.max_bid}}"
+                    data-current-bid="{{product.current_bid}}" data-button-id="{{product.product_id}}_btn"
+                    data-starting-bid="{{product.starting_bid}}" maxlength="10" oninput="ValidateBid(this)"/>
+                <input autocomplete="off" type="hidden" name="product_id" value="{{product.product_id}}" />
+                <button type="submit" id="{{product.product_id}}_btn" disabled>Bid</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function ValidateBid(input) {
+            let max_bid = input.getAttribute("data-max-bid");
+            let current_bid = input.getAttribute("data-current-bid");
+            button_id = input.getAttribute("data-button-id");
+            
+            let starting_bid = input.getAttribute("data-starting-bid");
+            starting_bid = parseFloat(starting_bid);
+            starting_bid = starting_bid + 0.01;
+            current_bid = parseFloat(current_bid) + 0.01;
+            button = document.getElementById(button_id);
+            if (isNaN(button)) {
+                console.log("invalid");
+            }
+            var ip = parseFloat(input.value);
+            if (ip >= current_bid && ip < max_bid && ip >= starting_bid) {
+                button.removeAttribute("disabled");
+            }
+            else 
+            {
+                button.setAttribute("disabled", "disabled");
+            }
+        }
+    </script>
+    {% endfor %} 
+</div>
+<div class="pagination">
+    <span class="page_links">
+        {% if page > 1 %}
+        <a href="?page={{ page|add:-1}}">Previous</a>
+        {% endif %}
+
+        {% for page_num in page_nums %}
+            {% if page_num == page %}
+                <span class="current_page">{{page_num}}</span>
+            {% else %}
+                <a href="?page={{page_num}}">{{page_num}}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page < total_pages  %}
+            <a href="?page={{ page|add:1}}">Next</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

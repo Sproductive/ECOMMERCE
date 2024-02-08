@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Status Notification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333333;
+        }
+
+        p {
+            color: #666666;
+        }
+
+        .status {
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Delivery Status Notification</h1>
+        <p>Dear {{name}},</p>
+        <p>We are pleased to inform you that your delivery has arrived at {{facility/location}}. The current status of your delivery is as follows:</p>
+        <p class="status">On Time</p>
+        <p>Your delivery is scheduled to arrive on the specified date and time. Our team is committed to ensuring a timely delivery experience for you.</p>
+        <p>If you have any questions or concerns, please feel free to contact our customer support team.</p>
+        <a href="{{Link to Customer Support}}" class="button">Contact Customer Support</a>
+        <p>Thank you for choosing our delivery service.</p>
+        <p>Best regards,<br>Your Delivery Team</p>
+    </div>
+</body>
+</html>

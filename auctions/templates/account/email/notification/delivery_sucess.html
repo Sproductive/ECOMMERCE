@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Successful Delivery Notification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333333;
+        }
+
+        p {
+            color: #666666;
+        }
+
+        .status {
+            font-weight: bold;
+            color: #2ecc71; /* Success color */
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Successful Delivery Notification</h1>
+        <p>Dear {{name}},</p>
+        <p>We are delighted to inform you that your delivery has been successfully completed. The current status of your delivery is:</p>
+        <p class="status">Delivered</p>
+        <p>Your order has been delivered to the specified address. We hope the items meet your expectations.</p>
+        <p>If you have any feedback or if there's anything else we can assist you with, please feel free to let us know.</p>
+        <a href="{{Link to Feedback Form}}" class="button">Provide Feedback</a>
+        <p>Thank you for choosing our delivery service. We appreciate your business.</p>
+        <p>Best regards,<br>Your Delivery Team</p>
+    </div>
+</body>
+</html>
